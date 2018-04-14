@@ -12,6 +12,7 @@ public class BigDirectory {
 		//先获取父文件夹下所有的文件夹和文件，将文件夹和文件分开
 		//对每个文件夹调用getBigestDir，递归，统计
 		//
+		//why do you do this ?
 		File dirFile = new File("D:\\Program Files");
 		File[] list = dirFile.listFiles();
 //		System.out.println(list[0].getName());
