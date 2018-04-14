@@ -1,22 +1,23 @@
+
 package bigDirectory;
 
 import java.io.File;
 import java.util.ArrayList;
-import java.util.TreeMap;
+
 
 public class BigDirectory {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		//ÏÈ»ñÈ¡¸¸ÎÄ¼ş¼ĞÏÂËùÓĞµÄÎÄ¼ş¼ĞºÍÎÄ¼ş£¬½«ÎÄ¼ş¼ĞºÍÎÄ¼ş·Ö¿ª
-		//¶ÔÃ¿¸öÎÄ¼ş¼Ğµ÷ÓÃgetBigestDir£¬µİ¹é£¬Í³¼Æ
+		
+		//å…ˆè·å–çˆ¶æ–‡ä»¶å¤¹ä¸‹æ‰€æœ‰çš„æ–‡ä»¶å¤¹å’Œæ–‡ä»¶ï¼Œå°†æ–‡ä»¶å¤¹å’Œæ–‡ä»¶åˆ†å¼€
+		//å¯¹æ¯ä¸ªæ–‡ä»¶å¤¹è°ƒç”¨getBigestDirï¼Œé€’å½’ï¼Œç»Ÿè®¡
 		//
 		File dirFile = new File("D:\\Program Files");
 		File[] list = dirFile.listFiles();
 //		System.out.println(list[0].getName());
 //		TreeMap<String,Long> tm = new TreeMap<String,Long>();
-		ArrayList<String> nameList = new ArrayList<String> ();	//ÓÃÀ´·ÅÎÄ¼ş¼ĞµÄÃû×Ö£¬ÒòÎª»ñÈ¡µÄÃû×ÖÁĞ±íÊÇÊı×é¸ñÊ½µÄ
-		ArrayList<Long> sizeList = new ArrayList<Long> ();	//´æ·ÅÎÄ¼ş¼Ğ´óĞ¡
+		ArrayList<String> nameList = new ArrayList<String> ();	//ç”¨æ¥æ”¾æ–‡ä»¶å¤¹çš„åå­—ï¼Œå› ä¸ºè·å–çš„åå­—åˆ—è¡¨æ˜¯æ•°ç»„æ ¼å¼çš„
+		ArrayList<Long> sizeList = new ArrayList<Long> ();	//å­˜æ”¾æ–‡ä»¶å¤¹å¤§å°
 		
 		for (int i=0; i<list.length; i++) {
 			
@@ -36,14 +37,14 @@ public class BigDirectory {
 	}
 	
 	public static long getBigestDir(File file) {
-		long size = 0;	//Õâ¸öÊÇ·ñºÏÀí£¿
+		long size = 0;	//è¿™ä¸ªæ˜¯å¦åˆç†ï¼Ÿ
 		File[] list = file.listFiles();
 		for (int i=0; i<list.length; i++) {
 			if (list[i].isDirectory()) {
-				size = size + getBigestDir(list[i]);	//ÊÇÎÄ¼ş¼Ğ¾Í¼ÌĞø£¬µ½×îºó»¹ÊÇÎÄ¼ş
+				size = size + getBigestDir(list[i]);	//æ˜¯æ–‡ä»¶å¤¹å°±ç»§ç»­ï¼Œåˆ°æœ€åè¿˜æ˜¯æ–‡ä»¶
 			} 
 			else {
-				size = size + list[i].length();	//ÊÇÎÄ¼ş¾ÍÍ³¼Æ´óĞ¡
+				size = size + list[i].length();	//æ˜¯æ–‡ä»¶å°±ç»Ÿè®¡å¤§å°
 			}
 		}
 		return size;
