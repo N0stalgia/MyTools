@@ -65,5 +65,43 @@ public class Garbage {
 }
 ```
 ### 类初始化时成员加载顺序 
-首先加载静态成员，注意，静态成员随着类的加载而加载，并且只加载一次，被该类所有的对象所共享。
-其次加载普通成员，并做默认初始化。
+ 首先加载静态成员，注意，静态成员随着类的加载而加载，并且只加载一次，被该类所有的对象所共享。   
+ 其次加载普通成员，并做默认初始化。   
+    
+ 还有一种静态成员初始化的方法，static代码块,随着类的加载而加载，一次，共享。
+ ```java
+ static int s1;
+ static {
+    s1 = 5;
+ }
+ ```
+ 非静态成员初始化，代码块，随着每一个对象建立都加载一次。
+  ```java
+  public class Cups {
+	Cup c1;
+	Cup c2;
+	{
+		c1 = new Cup(1);
+		c2 = new Cup(2);
+	}
+  	public Cups() {
+	}
+	public Cups(Cup c1, Cup c2) {
+		this.c1 = c1;
+		this.c2 = c2;
+	}
+
+	public static void main(String[] args) {
+		new Cups();
+		new Cups(new Cup(3),new Cup(4));
+	}
+}
+输出结果：
+Cup(1)
+Cup(2)
+Cup(3)
+Cup(4)
+Cup(1)
+Cup(2)
+   ```
+   
