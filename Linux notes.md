@@ -5,5 +5,34 @@
 
 ## 查看Linux系统版本信息
 cat /proc/verion
-## 设置默认网关
-route add default gw 192.168.1.1 
+## 设置默认网关以及路由
+route add default gw 192.168.1.1   
+添加路由   
+route add -net 192.168.0.0/24 gw 192.168.0.1   
+route add -host 192.168.1.1 dev 192.168.0.1   
+删除路由   
+route del -net 192.168.0.0/24 gw 192.168.0.1   
+## windows下添加路由
+1. 查看所有的路由表信息   
+
+route print   
+
+2. 添加一条路由条目   
+
+route add 157.0.0.0 MASK 255.0.0.0  157.55.80.1   
+
+route add 157.0.0.0 MASK 255.0.0.0  157.55.80.1 METRIC 3   
+
+route add 157.0.0.0 MASK 255.0.0.0  157.55.80.1 METRIC 3 IF 2   
+
+3. 添加一条永久路由条目（-p 表示永久路由，重启后不丢失）   
+
+route -p add 157.0.0.0 MASK 255.0.0.0  157.55.80.1    
+
+4. 删除路由条目  
+
+route delete 157.0.0.0   
+  
+5. 修改路由条目（CHANGE 只用于修改网关和/或跃点数）   
+
+route CHANGE 157.0.0.0 MASK 255.0.0.0 157.55.80.5 METRIC 2 IF 2   
