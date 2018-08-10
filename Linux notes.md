@@ -35,4 +35,8 @@ route delete 157.0.0.0
   
 5. 修改路由条目（CHANGE 只用于修改网关和/或跃点数）   
 
-route CHANGE 157.0.0.0 MASK 255.0.0.0 157.55.80.5 METRIC 2 IF 2   
+route CHANGE 157.0.0.0 MASK 255.0.0.0 157.55.80.5 METRIC 2 IF 2     
+
+## SCP可以传输文件或者文件夹
+scp -r test/      codinglog@192.168.0.101:/var/www/      传输文件夹   
+传输文件不带-r参数   
